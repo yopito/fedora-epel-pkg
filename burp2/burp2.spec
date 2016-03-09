@@ -1,31 +1,10 @@
 
 # packaging notes:
 #
-# XXX remove packaging notes.
-#
-# XXX should not be in -server package ?
-#     lrwxrwxrwx    1 root    root    4 Feb 23 14:37 /usr/sbin/bedup -> burp
-#     lrwxrwxrwx    1 root    root    4 Feb 23 14:37 /usr/sbin/bsigs -> burp
-#     -rw-r--r--    1 root    root 6974 Feb 23 14:37 /usr/share/doc/burp-server-2.0.32/burp_ca.txt
-#
-# XXX use/force 'protocol = 1' in burp-server.conf ?
-#     via /etc/sysconfig & service config files ?
-#     then remove conflict.
-#
-# XXX no bsigs man page
+# XXX missing bsigs man page: see https://github.com/grke/burp/issues/407
 # XXX use a dedicated user for burp ?
-# XXX conflict with burp 1.x packages ... not yet tested.
 # XXX SElinux stuff ?
-#
-# 2016-03-02 added burp2-doc subpackage
-# 2016-02-29 bump to 2.0.34
-# 2016-02-29 use "burp2", re-added Conflict with burp* 1.x
-# 2016-02-24 Removed Conflicts with burp* 1.x
-# 2016-02-23 Added Conflicts with burp* 1.x
-# 2016-02-23 added scripts, crontab and config samples
-# 2016-02-23 fixed file listing.
-# 2016-02-22 burp 2.0.32. build tools fixed.
-# 2016-02-22 sync with EPEL 1.4.40-2
+# XXX remove packaging notes.
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
