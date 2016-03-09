@@ -1,0 +1,14 @@
+[Unit]
+Description=Burp Backup Server
+Documentation=man:burp(1)
+After=network.target nss-lookup.target syslog.target local-fs.target remote-fs.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/burp-server
+Environment=CONFIG=/etc/burp/burp-server.conf
+ExecStart=/usr/sbin/burp -c $CONFIG
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

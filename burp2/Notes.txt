@@ -1,0 +1,23 @@
+
+burp packaging and Fedora/EPEL
+
+burp2 packaging: started using Fedora COPR building system.
+    See https://copr.fedorainfracloud.org/coprs/yopito
+
+* need to feed this repo with tito
+
+* "Group:" is unknown
+
+* fine for EPEL6, EPEL7, fedora 22, fedora 23
+
+* EPEL-5: does not build:  
+    need "Group:" to be defined in each (sub)package
+    see https://copr-be.cloud.fedoraproject.org/results/yopito/burp2/epel-5-x86_64/00166348-burp2/mockchain.log.gz
+    ```
+Error: No Package found for uthash-devel
+Error: No Package found for yajl-devel
+    ```
+
+* fedora 24: does not build, but related to f24, not to burp:  
+    https://copr-be.cloud.fedoraproject.org/results/yopito/burp2/fedora-24-x86_64/00166348-burp2/root.log
+
