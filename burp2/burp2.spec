@@ -13,7 +13,7 @@ Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
-Source0:	https://github.com/grke/burp/archive/%{version}.tar.gz
+Source0:	https://github.com/grke/burp/archive/%{version}.tar.gz#/burp-%{version}.tar.gz
 Source1:	burp.init
 Source2:	burp.service
 BuildRequires:	autoconf
