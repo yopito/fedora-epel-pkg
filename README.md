@@ -4,16 +4,10 @@ Packaging for Fedora/EPEL using Fedora COPR building system.
 Our COPR space: https://copr.fedorainfracloud.org/coprs/yopito
 
 Changelog: 
+* 2016-03-14 add el5 branch for burp 1.x packaging
 * 2016-03-09 add burp2 packaging
 * 2016-03-09 add tito stuff inside git repo
 * 2016-03-09 initialize git repo
-
-XXX 'el5' branch specificaly for EPEL-5 builds.  
-XXX store source files inside git repo ? not a file "sources" instead ?  
-XXX update source files name like uthash folder:  
-    ```
-    Source0:        https://github.com/troydhanson/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-    ```
 
 ## burp2 packaging
 
@@ -30,7 +24,8 @@ version: 2.0.34 (2016-03-09)
 Error: No Package found for uthash-devel
 Error: No Package found for yajl-devel
         ```
-    workaround: use 'el5' branch this repo.
+    * `autoreconf` needs autoconf 2.61+, el5 has only 2.59.
+    workaround: build burp 1.x from the el5 branch of this repo.
 
 * XXX fedora 24: does not build, but related to f24:  
     ```
