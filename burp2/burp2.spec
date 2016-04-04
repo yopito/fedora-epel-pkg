@@ -1,14 +1,14 @@
 
 # packaging notes:
 #
-# XXX missing bsigs man page: see https://github.com/grke/burp/issues/407
+# XXX Group "Backup Server" is unknown (f22+)
 # XXX use a dedicated user for burp ?
 # XXX SElinux stuff ?
 # XXX remove packaging notes.
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.0.34
+Version:	2.0.36
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
@@ -168,6 +168,7 @@ cp -p configs/client/cron.example \
 %{_sbindir}/bedup
 %{_mandir}/man8/vss_strip.8*
 %{_mandir}/man8/bedup.8*
+%{_mandir}/man8/bsigs.8*
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 %{_unitdir}/burp.service
 %else
@@ -202,6 +203,9 @@ fi
 
 
 %changelog
+* Mon Apr 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.36-1
+- Updated to latest released version
+
 * Wed Mar 02 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.34-1
 - Initial spec file for burp2 package (forked from burp 1.x)
 - Mark conflicts with burp* 1.x packages

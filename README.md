@@ -4,6 +4,7 @@ Packaging for Fedora/EPEL using Fedora COPR building system.
 Related COPR space: https://copr.fedorainfracloud.org/coprs/yopito
 
 Changelog: 
+* 2016-04-04 update to burp 2.0.36
 * 2016-03-14 add el5 branch for burp 1.x packaging
 * 2016-03-09 add burp2 packaging
 * 2016-03-09 add tito stuff inside git repo
@@ -11,9 +12,9 @@ Changelog:
 
 ## burp2 packaging
 
-version: 2.0.34 (2016-03-09)
+version: 2.0.36 (2016-04-04)
 
-At this time of writing, no burp2 packaging is provided by EPEL nor Fedora project.  
+At this time of writing, burp2 packaging is not provided by EPEL nor Fedora project.  
 Here the status of building this software against various distributions.  
 
 NB: el5 = RHEL5 and derivatives  (CentOS5, ScientificLinux 5, etc)
@@ -53,6 +54,6 @@ version: 1.4.40 (2016-03)
     * build is fine with the .spec file provided by the 'el5' branch of this repo.
     * need yajl-devel package too, that has to be built to (branch 'el5').
     * does not need uthash package, since uthash provided in burp 1.x source code.
-        (that is good: uthash is not available as a package for el5, either in os, update or EPEL channels)
+        (that is nice since uthash is not packaged for el5, either in OS, update or EPEL yum channels)
 
 
