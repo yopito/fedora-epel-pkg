@@ -5,6 +5,7 @@ Related COPR space: https://copr.fedorainfracloud.org/coprs/yopito/burp2/
 
 Changelog: 
 
+* 2016-05-02 updated to burp 2.0.38
 * 2016-05-02 reorganize file structure, added a howto
 * 2016-04-04 update to burp 2.0.36
 * 2016-03-14 add el5 branch for burp 1.x packaging
@@ -13,8 +14,6 @@ Changelog:
 * 2016-03-09 initialize git repo
 
 ## burp2 packaging status
-
-version: 2.0.36 (2016-04-04)
 
 At this time of writing, burp2 packaging is not provided by EPEL nor Fedora project.  
 Here the status of building this software against various distributions.  
@@ -43,7 +42,7 @@ Error: No Package found for yajl-devel
 
 version: 1.4.40 (2016-03)
 
-* EPEL channel provides burp 1.x packaging for el6, el7
+* EPEL channel provides burp 1.x packaging for el6 and el7, but NOT for el5.
 * FedoraProject provides burp 1.x packaging for Fedora 22, Fedora 23, and Fedora-rawhide
 
 * el5 (RHEL5, CentOS 5):
