@@ -1,0 +1,18 @@
+fix ncurses monitoring for a particular client:
+fix usage of '-C option' in "burp -C <client> -a s"
+
+reference:
+https://sourceforge.net/p/burp/mailman/message/35062491/
+
+diff -Naur burp-2.0.38.orig/src/client/monitor/status_client_ncurses.c burp-2.0.38/src/client/monitor/status_client_ncurses.c
+--- burp-2.0.38.orig/src/client/monitor/status_client_ncurses.c	2016-05-01 07:59:47.000000000 +0200
++++ burp-2.0.38/src/client/monitor/status_client_ncurses.c	2016-05-04 11:59:51.214577868 +0200
+@@ -782,6 +782,8 @@ static int update_screen(struct sel *sel
+ 
+ 	screen_header(row, col);
+ 
++	if(!sel->client) return 0;
++
+ #ifdef HAVE_NCURSES
+ 	if(actg==ACTION_STATUS)
+ 	{

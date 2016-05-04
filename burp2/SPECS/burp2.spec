@@ -9,13 +9,14 @@
 Name:		burp2
 Summary:	A Network-based backup and restore program
 Version:	2.0.38
-Release:	1%{?dist}
+Release:	2%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
 Source0:	http://downloads.sourceforge.net/project/burp/burp-%{version}/burp-%{version}.tar.bz2
 Source1:	burp.init
 Source2:	burp.service
+Patch0:		burp-2.0.38-monitoring-client.patch
 BuildRequires:	autoconf
 BuildRequires:	libtool
 BuildRequires:	librsync-devel
@@ -89,6 +90,7 @@ backing up Windows computers.
 
 %prep
 %setup -q -n burp-%{version}
+%patch0 -p1
 
 %build
 autoreconf -vif
@@ -203,6 +205,9 @@ fi
 
 
 %changelog
+* Wed May 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.38-2
+- fix ncurses monitoring for a given client ("-C" option)
+
 * Mon May 02 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.38-1
 - Bumped to 2.0.38
 - Updated source location to SourceForge
