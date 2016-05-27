@@ -8,7 +8,7 @@ Content:
 
 * [Changelog](#changelog)
 * [burp2 packaging status](#burp2-packaging-status)
-* [burp 1.x packaging status](#burp-1.x-packaging-status)
+* [burp 1.x packaging status](#burp-1x-packaging-status)
 * [howto use these source packaging](#howto-use-these-source-packaging)
 
 
@@ -54,7 +54,10 @@ version: 1.4.40 (2016-03)
 
 If you want to use this stuff to rebuild yourself your binary packages, here the instructions to achieve it.
 
-Getting tired of `tito` stuff, switched back to a more conventional file structure like this: 
+* branch `el5` : source packaging for el5 (RHEL5, CentOS5, etc)
+* branch `master` : source packaging for all other platforms than el5
+
+NB: Getting tired of `tito` stuff, switched back to a more conventional file structure like this: 
 
 ```
 <pkg>/SPECS/ ......... contains the Specfile of package <pkg>
