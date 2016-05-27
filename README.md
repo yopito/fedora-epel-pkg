@@ -1,10 +1,20 @@
 
-Packaging for Fedora/EPEL using Fedora COPR building system.
+This git repoistory hosts the "source" files used to provide binary packages of various softwares:
 
-Related COPR space: https://copr.fedorainfracloud.org/coprs/yopito/burp2/
+* burp backup software  
+    Related COPR space (hosts binary packages): https://copr.fedorainfracloud.org/coprs/yopito/burp2/
 
-Changelog: 
+Content:
 
+* [Changelog](#changelog)
+* [burp2 packaging status](#burp2-packaging-status)
+* [burp 1.x packaging status](#burp-1.x-packaging-status)
+* [howto use these source packaging](#howto-use-these-source-packaging)
+
+
+## Changelog: 
+
+* 2016-05-27 package burp 2.0.38 for el5 (RHEL5, CentOS5) platforms
 * 2016-05-02 updated to burp 2.0.38
 * 2016-05-02 reorganize file structure, added a howto
 * 2016-04-04 update to burp 2.0.36
@@ -15,34 +25,21 @@ Changelog:
 
 ## burp2 packaging status
 
-At this time of writing, burp2 packaging is not provided by EPEL nor Fedora project.  
-Here the status of building this software against various distributions.  
+At this time of writing (2016-05), burp 2.x software is not provided neither by EPEL yum channel nor Fedora project.  
+Here the status of building this software against various distributions:
 
-NB: el5 = RHEL5 and derivatives  (CentOS5, ScientificLinux 5, etc)
-
-* XXX Group "Backup Server" is unknown (f22+)
+* el5, el6, el7 : building/packaging is fine
+* fedora 22, 23, 24 and fedora-rawhide: building/packaging is fine
 * XXX COPR building for arch ARM is unusable, too much wait (2016-02)
 
-* XXX el5: can't build burp2:
-    * "Group:" has to be defined in each (sub)package
-    * missing some `BuildRequires` packages:  
-        https://copr-be.cloud.fedoraproject.org/results/yopito/burp2/epel-5-x86_64/00166348-burp2/mockchain.log.gz
-        ```
-Error: No Package found for uthash-devel
-Error: No Package found for yajl-devel
-        ```
-    * `autoreconf` needs autoconf 2.61+, el5 has only 2.59.
-
-    Workaround: use burp 1.x from the el5 branch of this repo.
-
-* building/packaging is fine for el6, el7, fedora 22, 23, 24 and fedora-rawhide
+NB: elx = RHELx and derivatives  (CentOS x, ScientificLinux x, etc)
 
 
-## burp (1.x) packaging status
+## burp 1.x packaging status
 
 version: 1.4.40 (2016-03)
 
-* EPEL channel provides burp 1.x packaging for el6 and el7, but NOT for el5.
+* EPEL channel provides binary package of burp 1.x for el6 and el7, but NOT for el5.
 * FedoraProject provides burp 1.x packaging for Fedora 22, Fedora 23, and Fedora-rawhide
 
 * el5 (RHEL5, CentOS 5):
@@ -54,6 +51,8 @@ version: 1.4.40 (2016-03)
 
 
 ## howto use these source packaging
+
+If you want to use this stuff to rebuild yourself your binary packages, here the instructions to achieve it.
 
 Getting tired of `tito` stuff, switched back to a more conventional file structure like this: 
 
