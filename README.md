@@ -12,7 +12,7 @@ Content:
 * [howto use these source packaging](#howto-use-these-source-packaging)
 
 
-## Changelog: 
+## Changelog
 
 * 2016-05-27 package burp 2.0.38 for el5 (RHEL5, CentOS5) platforms
 * 2016-05-02 updated to burp 2.0.38
@@ -25,7 +25,7 @@ Content:
 
 ## burp2 packaging status
 
-At this time of writing (2016-05), burp 2.x software is not provided neither by EPEL yum channel nor Fedora project.  
+At this time of writing (2016-05), burp 2.x is not available neither by EPEL yum channel nor Fedora project.  
 Here the status of building this software against various distributions:
 
 * el5, el6, el7 : building/packaging is fine
@@ -57,7 +57,7 @@ If you want to use this stuff to rebuild yourself your binary packages, here the
 * branch `el5` : source packaging for el5 (RHEL5, CentOS5, etc)
 * branch `master` : source packaging for all other platforms than el5
 
-NB: Getting tired of `tito` stuff, switched back to a more conventional file structure like this: 
+Getting tired of `tito` stuff, uses a more conventional file structure:
 
 ```
 <pkg>/SPECS/ ......... contains the Specfile of package <pkg>
@@ -65,6 +65,8 @@ NB: Getting tired of `tito` stuff, switched back to a more conventional file str
 ```
 
 Usage: 
+
+* install the EPEL repo
 
 * build a (binary) package:  
     ```
