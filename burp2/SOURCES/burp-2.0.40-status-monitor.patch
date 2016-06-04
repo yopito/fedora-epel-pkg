@@ -1,0 +1,53 @@
+fix issue: https://github.com/grke/burp/issues/433
+XXX hardcoded burp path in this patch
+
+based on:
+git diff f5d731461eeaff5030df281f0add7fde49dc0330..7e49ed02bc33ce978121c835a9be73fd06ae71d3
+
+diff --git a/src/client/monitor/status_client_ncurses.c b/src/client/monitor/status_client_ncurses.c
+index f1a0bcf..369a779 100644
+--- a/src/client/monitor/status_client_ncurses.c
++++ b/src/client/monitor/status_client_ncurses.c
+@@ -1442,7 +1442,10 @@ static pid_t fork_monitor(int *csin, int *csout, struct conf **confs)
+ 	char *args[12];
+ 
+ 	// FIX THIS: get all args from configuration.
+-	args[a++]=(char *)prog_long;
++	if(is_reg_lstat(prog_long)>0)
++		args[a++]=(char *)prog_long;
++	else
++		args[a++]=(char *)"/usr/sbin/burp";
+ 	args[a++]=(char *)"-c";
+ 	args[a++]=get_string(confs[OPT_CONFFILE]);
+ 	args[a++]=(char *)"-a";
+diff --git a/src/fsops.c b/src/fsops.c
+index 52c1a28..47dff3b 100644
+--- a/src/fsops.c
++++ b/src/fsops.c
+@@ -30,6 +30,14 @@ int is_dir_lstat(const char *path)
+         return S_ISDIR(buf.st_mode);
+ }
+ 
++int is_reg_lstat(const char *path)
++{
++        struct stat buf;
++        if(lstat(path, &buf))
++		return -1;
++        return S_ISREG(buf.st_mode);
++}
++
+ int is_dir(const char *path, struct dirent *d)
+ {
+ #ifdef _DIRENT_HAVE_D_TYPE
+diff --git a/src/fsops.h b/src/fsops.h
+index 6c8786e..fb3783a 100644
+--- a/src/fsops.h
++++ b/src/fsops.h
+@@ -10,6 +10,7 @@ extern void close_fd(int *fd);
+ 
+ extern int is_dir(const char *path, struct dirent *d);
+ extern int is_dir_lstat(const char *path);
++extern int is_reg_lstat(const char *path);
+ extern int mkpath(char **rpath, const char *limit);
+ extern int build_path(const char *datadir, const char *fname,
+         char **rpath, const char *limit);

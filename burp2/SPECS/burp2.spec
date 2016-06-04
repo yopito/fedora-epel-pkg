@@ -8,16 +8,20 @@
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.0.38
-Release:	2%{?dist}
+Version:	2.0.40
+Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
 Source0:	http://downloads.sourceforge.net/project/burp/burp-%{version}/burp-%{version}.tar.bz2
 Source1:	burp.init
 Source2:	burp.service
-Patch0:		burp-2.0.38-monitoring-client.patch
-BuildRequires:	autoconf
+Patch10:	burp-2.0.40-status-monitor.patch
+
+%if 0%{?rhel} < 7
+BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
+%endif
+
 BuildRequires:	libtool
 BuildRequires:	librsync-devel
 BuildRequires:	zlib-devel
@@ -41,6 +45,7 @@ backing up Windows computers.
 
 %package client
 Summary:	burp backup client
+Group:		Backup Server
 Requires:	librsync >= 1.0
 Provides:	burp = %{version}-%{release}
 Provides:	burp2-client = %{version}-%{release}
@@ -62,7 +67,11 @@ backing up Windows computers.
 
 %package doc
 Summary:	Documentation and samples for Burp backup
+Group:		Backup Server
+# RHEL 5 does not support noarch subpackages
+%if 0%{?fedora} || 0%{?rhel} >= 6
 BuildArch:	noarch
+%endif
 
 %description doc
 Burp is a network backup and restore program, using client and server.
@@ -74,6 +83,7 @@ backing up Windows computers.
 
 %package server
 Summary:	burp backup server
+Group:		Backup Server
 Requires:	burp2-client%{?_isa} = %{version}-%{release}
 Requires:	openssl-perl
 Provides:	burp-server = %{version}-%{release}
@@ -90,10 +100,9 @@ backing up Windows computers.
 
 %prep
 %setup -q -n burp-%{version}
-%patch0 -p1
+%patch10 -p1
 
 %build
-autoreconf -vif
 %configure --sysconfdir=%{_sysconfdir}/burp --docdir=%{_defaultdocdir}/%{name}-%{version}
 make %{?_smp_mflags}
 
@@ -107,8 +116,8 @@ make install-all DESTDIR=%{buildroot}
 mkdir -p %{buildroot}%{_unitdir}
 install -p -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/
 %else
-mkdir -p %{buildroot}%{_initddir}
-install -p -m 0755 %{SOURCE1} %{buildroot}%{_initddir}/burp
+mkdir -p %{buildroot}%{_initrddir}
+install -p -m 0755 %{SOURCE1} %{buildroot}%{_initrddir}/burp
 %endif
 
 # -doc: add server scripts examples
@@ -133,6 +142,8 @@ cp -p configs/client/cron.example \
       %{buildroot}%{_sysconfdir}/burp/burp.conf \
       %{mydocbuild}/client/.
 
+# -server: do not provide a (test)client
+rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 
 %files doc
 %{_defaultdocdir}/%{name}-%{version}/
@@ -161,7 +172,6 @@ cp -p configs/client/cron.example \
 %config(noreplace) %{_sysconfdir}/burp/CA.cnf
 %config(noreplace) %{_sysconfdir}/burp/burp-server.conf
 %config(noreplace) %{_sysconfdir}/burp/clientconfdir/incexc/example
-%config(noreplace) %{_sysconfdir}/burp/clientconfdir/testclient
 %dir %{_sysconfdir}/burp/clientconfdir/incexc
 %dir %{_sysconfdir}/burp/clientconfdir
 %dir %{_localstatedir}/spool/burp %attr(750 root root)
@@ -174,7 +184,7 @@ cp -p configs/client/cron.example \
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 %{_unitdir}/burp.service
 %else
-%{_initddir}/burp
+%{_initrddir}/burp
 %endif
 
 %post server
@@ -205,6 +215,13 @@ fi
 
 
 %changelog
+* Sat Jun 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.40-1
+- Updated to latest released version
+- merge spec with el5 branch
+- do not use autoreconf anymore
+- include fix on status monitor
+- do not provide a (test)client configuration
+
 * Wed May 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.38-2
 - fix ncurses monitoring for a given client ("-C" option)
 

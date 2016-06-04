@@ -14,6 +14,7 @@ Content:
 
 ## Changelog
 
+* 2016-06-04 packaged burp 2.0.40 (el5 and others)
 * 2016-05-27 package burp 2.0.38 for el5 (RHEL5, CentOS5) platforms
 * 2016-05-02 updated to burp 2.0.38
 * 2016-05-02 reorganize file structure, added a howto
