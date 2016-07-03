@@ -8,7 +8,7 @@
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.0.40
+Version:	2.0.42
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
@@ -16,7 +16,6 @@ URL:		http://burp.grke.org/
 Source0:	http://downloads.sourceforge.net/project/burp/burp-%{version}/burp-%{version}.tar.bz2
 Source1:	burp.init
 Source2:	burp.service
-Patch10:	burp-2.0.40-status-monitor.patch
 
 %if 0%{?rhel} < 7
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -100,7 +99,6 @@ backing up Windows computers.
 
 %prep
 %setup -q -n burp-%{version}
-%patch10 -p1
 
 %build
 %configure --sysconfdir=%{_sysconfdir}/burp --docdir=%{_defaultdocdir}/%{name}-%{version}
@@ -215,6 +213,9 @@ fi
 
 
 %changelog
+* Sun Jul 03 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.42-1
+- Updated to latest released version
+
 * Sat Jun 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.40-1
 - Updated to latest released version
 - merge spec with el5 branch

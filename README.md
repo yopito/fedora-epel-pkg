@@ -14,6 +14,7 @@ Content:
 
 ## Changelog
 
+* 2016-07-03 packaged burp 2.0.42 (el5, el6, el7, fedora*)
 * 2016-06-04 packaged burp 2.0.40 (el5 and others)
 * 2016-05-27 package burp 2.0.38 for el5 (RHEL5, CentOS5) platforms
 * 2016-05-02 updated to burp 2.0.38
@@ -51,14 +52,15 @@ version: 1.4.40 (2016-03)
         (that is nice since uthash is not packaged for el5, either in OS, update or EPEL yum channels)
 
 
-## howto use these source packaging
+## Howto to build RPMs from this git repo
 
-If you want to use this stuff to rebuild yourself your binary packages, here the instructions to achieve it.
+If you don't want to use the binary packages from the COPR space hosted by Fedora, you can use the packaging provided here.  
+Here the instructions to achieve it.
 
 * branch `el5` : source packaging for el5 (RHEL5, CentOS5, etc)
 * branch `master` : source packaging for all other platforms than el5
 
-Getting tired of `tito` stuff, uses a more conventional file structure:
+Getting tired of `tito` stuff, I use a more conventional file structure:
 
 ```
 <pkg>/SPECS/ ......... contains the Specfile of package <pkg>
@@ -67,16 +69,16 @@ Getting tired of `tito` stuff, uses a more conventional file structure:
 
 Usage: 
 
-* install the EPEL repo
+* install and enable use of the EPEL repo
 
-* build a (binary) package:  
+* launch the build of a (binary) package:  
     ```
 cd <pkg>
 mkdir -p RPMS BUILD SRPMS
 rpmbuild --define="_topdir $(pwd)" -bb SPECS/<pkg>.spec
     ```
 
-* build a source package into `<pkg>/SPRMS/` folder:  
+* build a SRPM source package into `<pkg>/SPRMS/` folder:  
     ```
 cd <pkg>
 mkdir -p SRPMS
