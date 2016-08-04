@@ -14,6 +14,7 @@ Content:
 
 ## Changelog
 
+* 2016-08-04 packaged burp 2.0.44 (el5, el6, el7, fedora*)
 * 2016-07-03 packaged burp 2.0.42 (el5, el6, el7, fedora*)
 * 2016-06-04 packaged burp 2.0.40 (el5 and others)
 * 2016-05-27 package burp 2.0.38 for el5 (RHEL5, CentOS5) platforms
