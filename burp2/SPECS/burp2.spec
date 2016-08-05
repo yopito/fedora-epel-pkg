@@ -9,7 +9,7 @@
 Name:		burp2
 Summary:	A Network-based backup and restore program
 Version:	2.0.44
-Release:	1%{?dist}
+Release:	2%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
@@ -88,6 +88,7 @@ Requires:	openssl-perl
 Provides:	burp-server = %{version}-%{release}
 Provides:	bedup = %{version}-%{release}
 Provides:	vss_strip = %{version}-%{release}
+Requires(pre):	shadow-utils
 
 
 %description server
@@ -185,6 +186,12 @@ rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 %{_initrddir}/burp
 %endif
 
+%pre server
+getent group burp >/dev/null || groupadd -r burp
+getent passwd burp >/dev/null || \
+    useradd -r -g burp -d /var/lib/burp -s /sbin/nologin \
+    -c "BURP server service user" burp
+
 %post server
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 %systemd_post burp.service
@@ -213,6 +220,9 @@ fi
 
 
 %changelog
+* Fri Aug 05 2016 Patrick Brideau <pbrideau@kronostechnologies.com> - 2.0.44-2
+- Run daemon as burp user
+
 * Thu Aug 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.44-1
 - Updated to latest released version
 
