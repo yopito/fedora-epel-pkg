@@ -4,6 +4,7 @@ Documentation=man:burp(1)
 After=network.target nss-lookup.target syslog.target local-fs.target remote-fs.target
 
 [Service]
+User=burp
 Type=forking
 EnvironmentFile=-/etc/sysconfig/burp-server
 Environment=CONFIG=/etc/burp/burp-server.conf

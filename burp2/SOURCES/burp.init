@@ -24,7 +24,7 @@ conffile=${CONFFILE-/etc/burp/burp-server.conf}
 start () {
     	status -p ${pidfile} ${burp} &>/dev/null && { echo "$prog is already running"; exit 1; }
 	echo -n $"Starting $prog: "
-	daemon --pidfile=${pidfile} ${burp} -c ${conffile}
+	daemon --user burp --pidfile=${pidfile} ${burp} -c ${conffile}
 	RETVAL=$?
 	echo
 	[ $RETVAL -eq 0 ] && touch ${lockfile}
