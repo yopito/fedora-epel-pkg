@@ -1,5 +1,5 @@
 
-This git repoistory hosts the "source" files used to provide binary packages of various softwares:
+This git repo hosts the source RPM files used to generate binary packages of various softwares:
 
 * burp backup software  
     Related COPR space (hosts binary packages): https://copr.fedorainfracloud.org/coprs/yopito/burp2/
@@ -14,6 +14,7 @@ Content:
 
 ## Changelog
 
+* 2016-08-15 fixed burp2-server packaging: remove 'burp-server' property
 * 2016-08-04 packaged burp 2.0.44 (el5, el6, el7, fedora*)
 * 2016-07-03 packaged burp 2.0.42 (el5, el6, el7, fedora*)
 * 2016-06-04 packaged burp 2.0.40 (el5 and others)

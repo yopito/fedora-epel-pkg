@@ -9,7 +9,7 @@
 Name:		burp2
 Summary:	A Network-based backup and restore program
 Version:	2.0.44
-Release:	1%{?dist}
+Release:	2%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
@@ -85,7 +85,6 @@ Summary:	burp backup server
 Group:		Backup Server
 Requires:	burp2-client%{?_isa} = %{version}-%{release}
 Requires:	openssl-perl
-Provides:	burp-server = %{version}-%{release}
 Provides:	bedup = %{version}-%{release}
 Provides:	vss_strip = %{version}-%{release}
 
@@ -213,6 +212,9 @@ fi
 
 
 %changelog
+* Mon Aug 15 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.44-2
+- Removed 'Provides: burp-server' property (fix https://github.com/yopito/fedora-epel-pkg/issues/2)
+
 * Thu Aug 04 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.44-1
 - Updated to latest released version
 
