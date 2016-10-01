@@ -14,6 +14,7 @@ Content:
 
 ## Changelog
 
+* 2016-10-01 packaged burp 2.0.48 (el5, el6, el7, fedora*)
 * 2016-09-06 packaged burp 2.0.46 (el5, el6, el7, fedora*)
 * 2016-08-15 fixed burp2-server packaging: remove 'burp-server' property
 * 2016-08-04 packaged burp 2.0.44 (el5, el6, el7, fedora*)
