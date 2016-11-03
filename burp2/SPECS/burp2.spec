@@ -8,7 +8,7 @@
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.0.48
+Version:	2.0.50
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
@@ -212,6 +212,9 @@ fi
 
 
 %changelog
+* Thu Nov 03 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.50-1
+- Updated to latest released version
+
 * Sat Oct 01 2016 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.48-1
 - Updated to latest released version
 
