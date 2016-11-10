@@ -3,6 +3,7 @@
 #
 # XXX Group "Backup Server" is unknown (f22+)
 # XXX use a dedicated user for burp ?
+# XXX link against tcpwrappers ?
 # XXX SElinux stuff ?
 # XXX remove packaging notes.
 
