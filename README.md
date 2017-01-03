@@ -14,6 +14,7 @@ Content:
 
 ## Changelog
 
+* 2017-01-03 packaged burp 2.0.54 (el5, el6, el7, fedora*)
 * 2016-11-09 packaged burp 2.0.52 (el5, el6, el7, fedora*)
 * 2016-11-03 packaged burp 2.0.50 (el5, el6, el7, fedora*)
 * 2016-10-01 packaged burp 2.0.48 (el5, el6, el7, fedora*)
