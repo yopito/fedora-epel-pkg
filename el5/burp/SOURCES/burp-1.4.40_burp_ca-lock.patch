@@ -1,0 +1,16 @@
+Fix a race condition in burp_ca with a lock file.
+See http://sourceforge.net/p/burp/mailman/message/34524466/
+--- burp-1.4.40/configs/certs/CA/burp_ca.old	2015-07-01 13:34:27.000000000 +0200
++++ burp-1.4.40/configs/certs/CA/burp_ca	2015-10-08 15:52:31.258044142 +0200
+@@ -5,6 +5,11 @@
+ # Version:   1.2
+ # Date:      29.12.2012
+ 
++# Locking code to try to make sure that two instances do not run together and
++# corrupt the ca files.
++[ "${FLOCKER}" != "$0" ] \
++  && exec env FLOCKER="$0" flock -e -w 60 /tmp/burp_ca.lock "$0" "$@" || :
++
+ set -e
+ 
+ etc=/etc/burp

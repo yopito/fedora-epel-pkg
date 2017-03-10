@@ -1,0 +1,11 @@
+--- burp-1.4.40/src/conf.c~	2015-07-01 13:34:27.000000000 +0200
++++ burp-1.4.40/src/conf.c	2016-02-19 06:18:15.738769853 +0100
+@@ -538,7 +538,7 @@
+ struct fstype
+ {
+ 	const char *str;
+-	long flag;
++	uint64_t flag;
+ };
+ 
+ static struct fstype fstypes[]={
