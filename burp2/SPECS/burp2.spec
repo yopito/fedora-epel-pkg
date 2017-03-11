@@ -176,9 +176,11 @@ rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 %{_bindir}/vss_strip
 %{_sbindir}/bsigs
 %{_sbindir}/bedup
+%{_sbindir}/bsparse
 %{_mandir}/man8/vss_strip.8*
 %{_mandir}/man8/bedup.8*
 %{_mandir}/man8/bsigs.8*
+%{_mandir}/man8/bsparse.8*
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 %{_unitdir}/burp.service
 %else
@@ -213,8 +215,9 @@ fi
 
 
 %changelog
-* Fri Mar 10 2017 Pierre Bourgin <pierre.bourgin@free.fr> - 2.1.4-1
+* Sat Mar 11 2017 Pierre Bourgin <pierre.bourgin@free.fr> - 2.1.4-1
 - Updated to latest version
+- new bsparse utility: -server package
 
 * Tue Jan 03 2017 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.54-1
 - Updated to latest released version
