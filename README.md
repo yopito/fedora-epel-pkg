@@ -16,7 +16,8 @@ Content:
 
 ## Changelog
 
-* 2017-03-10 packaged burp 2.1.14
+* 2017-04-05 packaged burp 2.1.6
+* 2017-03-10 packaged burp 2.1.4
 * 2017-03-10 initialize "latest" branch
 
 ## burp2 packaging status
