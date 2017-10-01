@@ -16,6 +16,7 @@ Content:
 
 ## Changelog
 
+* 2017-10-01 packaged burp 2.1.20
 * 2017-08-20 packaged burp 2.1.16
 * 2017-07-05 packaged burp 2.1.12
 * 2017-05-03 packaged burp 2.1.8
