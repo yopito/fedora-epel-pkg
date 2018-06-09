@@ -8,7 +8,6 @@ This git repo hosts various software RPM packaging source(s):
 
 Content:
 
-* [Changelog](#changelog)
 * [burp2 packaging status](#burp2-packaging-status)
 * [burp 1.x packaging status](#burp-1x-packaging-status)
 * [howto use these source packaging](#howto-use-these-source-packaging)
@@ -16,19 +15,7 @@ Content:
 
 ## Changelog
 
-* 2018-04-07 packaged burp 2.2.0
-* 2018-03-16 packaged burp 2.1.30
-* 2018-02-07 packaged burp 2.1.28
-* 2018-01-07 packaged burp 2.1.26
-* 2017-12-06 packaged burp 2.1.24
-* 2017-11-05 packaged burp 2.1.22
-* 2017-10-01 packaged burp 2.1.20
-* 2017-08-20 packaged burp 2.1.16
-* 2017-07-05 packaged burp 2.1.12
-* 2017-05-03 packaged burp 2.1.8
-* 2017-04-05 packaged burp 2.1.6
-* 2017-03-10 packaged burp 2.1.4
-* 2017-03-10 initialize "latest" branch
+See git commit
 
 ## burp2 packaging status
 
