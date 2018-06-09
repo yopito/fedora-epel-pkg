@@ -9,7 +9,7 @@
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.0.54
+Version:	2.1.32
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
@@ -176,9 +176,11 @@ rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 %{_bindir}/vss_strip
 %{_sbindir}/bsigs
 %{_sbindir}/bedup
+%{_sbindir}/bsparse
 %{_mandir}/man8/vss_strip.8*
 %{_mandir}/man8/bedup.8*
 %{_mandir}/man8/bsigs.8*
+%{_mandir}/man8/bsparse.8*
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 %{_unitdir}/burp.service
 %else
@@ -213,6 +215,9 @@ fi
 
 
 %changelog
+* Sat Apr 07 2018 Pierre Bourgin <pierre.bourgin@free.fr> - 2.1.32-1
+- Updated to stable version
+
 * Tue Jan 03 2017 Pierre Bourgin <pierre.bourgin@free.fr> - 2.0.54-1
 - Updated to latest released version
 

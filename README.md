@@ -16,6 +16,7 @@ Content:
 
 ## Changelog
 
+* 2018-04-07 update burp to 2.1.32
 * 2017-03-10 switch from master+el5 branch to "stable" branch
 * 2017-01-03 packaged burp 2.0.54 (el5, el6, el7, fedora*)
 * 2016-11-09 packaged burp 2.0.52 (el5, el6, el7, fedora*)
