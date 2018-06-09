@@ -16,25 +16,7 @@ Content:
 
 ## Changelog
 
-* 2018-04-07 update burp to 2.1.32
-* 2017-03-10 switch from master+el5 branch to "stable" branch
-* 2017-01-03 packaged burp 2.0.54 (el5, el6, el7, fedora*)
-* 2016-11-09 packaged burp 2.0.52 (el5, el6, el7, fedora*)
-* 2016-11-03 packaged burp 2.0.50 (el5, el6, el7, fedora*)
-* 2016-10-01 packaged burp 2.0.48 (el5, el6, el7, fedora*)
-* 2016-09-06 packaged burp 2.0.46 (el5, el6, el7, fedora*)
-* 2016-08-15 fixed burp2-server packaging: remove 'burp-server' property
-* 2016-08-04 packaged burp 2.0.44 (el5, el6, el7, fedora*)
-* 2016-07-03 packaged burp 2.0.42 (el5, el6, el7, fedora*)
-* 2016-06-04 packaged burp 2.0.40 (el5 and others)
-* 2016-05-27 package burp 2.0.38 for el5 (RHEL5, CentOS5) platforms
-* 2016-05-02 updated to burp 2.0.38
-* 2016-05-02 reorganize file structure, added a howto
-* 2016-04-04 update to burp 2.0.36
-* 2016-03-14 add el5 branch for burp 1.x packaging
-* 2016-03-09 add burp2 packaging
-* 2016-03-09 add tito stuff inside git repo
-* 2016-03-09 initialize git repo
+See git commit
 
 ## burp2 packaging status
 
