@@ -9,12 +9,12 @@
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.3.28
+Version:	2.3.34
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
-Source0:	http://downloads.sourceforge.net/project/burp/burp-%{version}/burp-%{version}.tar.bz2
+Source0:	https://github.com/grke/burp/releases/download/%{version}/burp-%{version}.tar.bz2
 Source1:	burp.init
 Source2:	burp.service
 
@@ -215,6 +215,10 @@ fi
 
 
 %changelog
+* Sun Sep 27 2020 Pierre Bourgin <pierre.bourgin@free.fr> - 2.3.34-1
+- Updated to latest version
+- distfile comes from github.com (not sourceforge anymore)
+
 * Sat Jun 20 2020 Pierre Bourgin <pierre.bourgin@free.fr> - 2.3.28-1
 - Updated to latest version
 
