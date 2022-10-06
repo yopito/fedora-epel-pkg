@@ -16,7 +16,7 @@ Content:
 
 ## Changelog
 
-See git commit
+See git commits.
 
 ## burp2 packaging status
 
@@ -43,7 +43,8 @@ version: 1.4.40 (2016-03)
 
 ## Howto to build RPMs from this git repo
 
-If you don't want to use the binary packages from the COPR space listed above, here instructions to build RPM packages yourself.
+If you don't want to use the binary packages from the COPR space listed above,
+here instructions to build RPM packages yourself.
 
 * branch `latest` : last burp2 version that is not the stable one,
 * branch `stable` : the burp1 and burp2 version that is declared as stable,
@@ -63,16 +64,16 @@ Usage:
 
 * launch the build of a (binary) package:  
     ```
-cd <pkg>
-mkdir -p RPMS BUILD SRPMS
-rpmbuild --define="_topdir $(pwd)" -bb SPECS/<pkg>.spec
+    cd <pkg>
+    mkdir -p RPMS BUILD SRPMS
+    rpmbuild --define="_topdir $(pwd)" -bb SPECS/<pkg>.spec
     ```
 
 * build a SRPM source package into `<pkg>/SPRMS/` folder:  
     ```
-cd <pkg>
-mkdir -p SRPMS
-rpmbuild --define="_topdir $(pwd)" -bs SPECS/<pkg>.spec
+    cd <pkg>
+    mkdir -p SRPMS
+    rpmbuild --define="_topdir $(pwd)" -bs SPECS/<pkg>.spec
     ```
 
 To request a build with COPR infrastructure, choose to generate from a SRPM file that you upload. 
