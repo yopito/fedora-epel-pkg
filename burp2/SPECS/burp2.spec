@@ -10,13 +10,14 @@
 Name:		burp2
 Summary:	A Network-based backup and restore program
 Version:	2.4.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
 Source0:	https://github.com/grke/burp/releases/download/%{version}/burp-%{version}.tar.bz2
 Source1:	burp.init
 Source2:	burp.service
+Patch11:	burp-2.0.40-ncurses.patch
 
 %if 0%{?rhel} < 7
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -31,7 +32,9 @@ BuildRequires:	libacl-devel
 BuildRequires:	uthash-devel
 BuildRequires:	yajl-devel
 
-%if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
+%if 0%{?fedora} >= 36 || 0%{?rhel} >= 9
+BuildRequires:	systemd-rpm-macros
+%elif 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 BuildRequires:	systemd-units
 %endif
 
@@ -99,6 +102,7 @@ backing up Windows computers.
 
 %prep
 %setup -q -n burp-%{version}
+%patch11 -p1
 
 %build
 %configure --sysconfdir=%{_sysconfdir}/burp --docdir=%{_defaultdocdir}/%{name}-%{version}
@@ -215,6 +219,10 @@ fi
 
 
 %changelog
+* Sun Oct  9 2022 Pierre Bourgin <pierre.bourgin@free.fr> - 2.4.0-2
+- Added build support for el9 and fedora 36+
+- Fix build for fedora 37
+
 * Sat May 22 2021 Pierre Bourgin <pierre.bourgin@free.fr> - 2.4.0-1
 - Updated to stable version
 

@@ -1,0 +1,41 @@
+Fix for fedora 37+: build fails because
+"cc1: some warnings being treated as errors"
+
+From 1d6c931af7c11f164cf7ad3479781e8f03413496 Mon Sep 17 00:00:00 2001
+From: Graham Keeling <grke@grke.net>
+Date: Fri, 5 Nov 2021 07:56:49 +1000
+Subject: [PATCH] Fix some warnings on debian builds
+
+Change-Id: I6cf59a10ee49f342a3fcac9a5a6d935e65b8ffef
+---
+ src/client/monitor/status_client_ncurses.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/client/monitor/status_client_ncurses.c b/src/client/monitor/status_client_ncurses.c
+index ef7ae892..bfc96b50 100644
+--- a/src/client/monitor/status_client_ncurses.c
++++ b/src/client/monitor/status_client_ncurses.c
+@@ -347,7 +347,7 @@ static void screen_header_ncurses(const char *date, int l, int col)
+ 	char v[32]="";
+ 	snprintf(v, sizeof(v), " %s monitor %s", PACKAGE_TARNAME, VERSION);
+ 	print_line(v, 0-TOP_SPACE, col);
+-	mvprintw(0, col-l-1, date);
++	mvprintw(0, col-l-1, "%s", date);
+ }
+ #endif
+ 
+@@ -749,7 +749,10 @@ static void update_screen_view_log(struct sel *sel, int *x, int col,
+ 	if(sel->client
+ 	  && sel->backup
+ 	  && (sel->logop & BU_LIVE_COUNTERS))
+-		return update_screen_live_counters_w(sel, x, col);
++	{
++		update_screen_live_counters_w(sel, x, col);
++		return;
++	}
+ 
+ 	for(l=sel->llines; l; l=l->next)
+ 	{
+-- 
+2.38.0
+
