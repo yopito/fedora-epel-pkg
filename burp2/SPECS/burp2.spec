@@ -9,7 +9,7 @@
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.3.38
+Version:	3.1.4
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
@@ -31,7 +31,9 @@ BuildRequires:	libacl-devel
 BuildRequires:	uthash-devel
 BuildRequires:	yajl-devel
 
-%if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
+%if 0%{?fedora} >= 36 || 0%{?rhel} >= 9
+BuildRequires:	systemd-rpm-macros
+%elif 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 BuildRequires:	systemd-units
 %endif
 
@@ -179,8 +181,6 @@ rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 %{_sbindir}/bsparse
 %{_mandir}/man8/vss_strip.8*
 %{_mandir}/man8/bedup.8*
-%{_mandir}/man8/bsigs.8*
-%{_mandir}/man8/bsparse.8*
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
 %{_unitdir}/burp.service
 %else
@@ -215,6 +215,10 @@ fi
 
 
 %changelog
+* Sat May 06 2023 Pierre Bourgin <pierre.bourgin@free.fr> - 3.1.4-1
+- Updated to latest version
+- Added build support for el9 and fedora 36+
+
 * Sun Nov 29 2020 Pierre Bourgin <pierre.bourgin@free.fr> - 2.3.38-1
 - Updated to latest version
 
