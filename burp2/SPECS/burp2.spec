@@ -2,22 +2,21 @@
 # packaging notes:
 #
 # XXX Group "Backup Server" is unknown (f22+)
-# XXX use a dedicated user for burp ?
+# XXX use a dedicated user to run burp service ?
 # XXX link against tcpwrappers ?
 # XXX SElinux stuff ?
 # XXX remove packaging notes.
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	2.4.0
-Release:	2%{?dist}
+Version:	3.2.0
+Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
 Source0:	https://github.com/grke/burp/releases/download/%{version}/burp-%{version}.tar.bz2
 Source1:	burp.init
 Source2:	burp.service
-Patch11:	burp-2.0.40-ncurses.patch
 
 %if 0%{?rhel} < 7
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
@@ -102,7 +101,6 @@ backing up Windows computers.
 
 %prep
 %setup -q -n burp-%{version}
-%patch11 -p1
 
 %build
 %configure --sysconfdir=%{_sysconfdir}/burp --docdir=%{_defaultdocdir}/%{name}-%{version}
@@ -183,10 +181,8 @@ rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 %{_sbindir}/bsparse
 %{_mandir}/man8/vss_strip.8*
 %{_mandir}/man8/bedup.8*
-%{_mandir}/man8/bsigs.8*
-%{_mandir}/man8/bsparse.8*
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
-%{_unitdir}/burp.service
+/%{_unitdir}/burp.service
 %else
 %{_initrddir}/burp
 %endif
@@ -219,6 +215,9 @@ fi
 
 
 %changelog
+* Sat Mar 14 2026 Pierre Bourgin <pierre.bourgin@free.fr> - 3.2.0-1
+- Updated to stable version
+
 * Sun Oct  9 2022 Pierre Bourgin <pierre.bourgin@free.fr> - 2.4.0-2
 - Added build support for el9 and fedora 36+
 - Fix build for fedora 37
