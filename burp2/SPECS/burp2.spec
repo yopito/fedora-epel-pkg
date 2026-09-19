@@ -2,14 +2,14 @@
 # packaging notes:
 #
 # XXX Group "Backup Server" is unknown (f22+)
-# XXX use a dedicated user for burp ?
+# XXX use a dedicated user to run burp service ?
 # XXX link against tcpwrappers ?
 # XXX SElinux stuff ?
 # XXX remove packaging notes.
 
 Name:		burp2
 Summary:	A Network-based backup and restore program
-Version:	3.1.4
+Version:	3.3.0
 Release:	1%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
@@ -29,7 +29,6 @@ BuildRequires:	openssl-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libacl-devel
 BuildRequires:	uthash-devel
-BuildRequires:	yajl-devel
 
 %if 0%{?fedora} >= 36 || 0%{?rhel} >= 9
 BuildRequires:	systemd-rpm-macros
@@ -182,7 +181,7 @@ rm %{buildroot}%{_sysconfdir}/burp/clientconfdir/testclient
 %{_mandir}/man8/vss_strip.8*
 %{_mandir}/man8/bedup.8*
 %if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
-%{_unitdir}/burp.service
+/%{_unitdir}/burp.service
 %else
 %{_initrddir}/burp
 %endif
@@ -215,6 +214,10 @@ fi
 
 
 %changelog
+* Sat Sep 19 2026 Pierre Bourgin <pierre.bourgin@free.fr> - 3.3.0-1
+- Updated to latest version
+- remove yajl dependency since provided by burp from 2023-09
+
 * Sat May 06 2023 Pierre Bourgin <pierre.bourgin@free.fr> - 3.1.4-1
 - Updated to latest version
 - Added build support for el9 and fedora 36+
