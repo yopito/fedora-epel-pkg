@@ -10,7 +10,7 @@
 Name:		burp2
 Summary:	A Network-based backup and restore program
 Version:	3.2.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 Group:		Backup Server
 License:	AGPLv3 and BSD and GPLv2+ and LGPLv2+
 URL:		http://burp.grke.org/
@@ -29,7 +29,6 @@ BuildRequires:	openssl-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libacl-devel
 BuildRequires:	uthash-devel
-BuildRequires:	yajl-devel
 
 %if 0%{?fedora} >= 36 || 0%{?rhel} >= 9
 BuildRequires:	systemd-rpm-macros
@@ -215,6 +214,9 @@ fi
 
 
 %changelog
+* Sat Sep 19 2026 Pierre Bourgin <pierre.bourgin@free.fr> - 3.2.0-2
+- remove yajl dependency since provided by burp since 2023-09
+
 * Sat Mar 14 2026 Pierre Bourgin <pierre.bourgin@free.fr> - 3.2.0-1
 - Updated to stable version
 
